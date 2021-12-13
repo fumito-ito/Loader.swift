@@ -97,20 +97,19 @@ class CutoutView : UIView
 {
 
     override func draw(_ rect: CGRect) {
-
         super.draw(rect)
-        let context = UIGraphicsGetCurrentContext()
-        context?.setFillColor(UIColor.white.cgColor)
-        context?.fill(self.bounds)
 
-        for view in (self.superview?.subviews)! {
+        guard let context = UIGraphicsGetCurrentContext(), let subviews = self.superview?.subviews else {
+            return
+        }
 
-            if view != self {
+        context.setFillColor(UIColor.white.cgColor)
+        context.fill(self.bounds)
 
-                context?.setBlendMode(.clear);
-                context?.setFillColor(UIColor.clear.cgColor)
-                context?.fill(view.frame)
-            }
+        for view in subviews where view != self {
+            context.setBlendMode(.clear)
+            context.setFillColor(UIColor.clear.cgColor)
+            context.fill(view.frame)
         }
     }
 
@@ -118,7 +117,7 @@ class CutoutView : UIView
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setNeedsDisplay()
-        self.superview?.ld_getGradient()?.frame = (self.superview?.bounds)!
+        self.superview?.ld_getGradient()?.frame = self.superview?.bounds
     }
 }
 
