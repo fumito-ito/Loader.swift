@@ -19,7 +19,7 @@ class MasterViewController: UITableViewController {
     }
     
     
-    func loaded()
+    @objc func loaded()
     {
         Loader.removeLoaderFrom(self.tableView)
     }
