@@ -117,7 +117,9 @@ class CutoutView : UIView
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setNeedsDisplay()
-        self.superview?.ld_getGradient()?.frame = self.superview?.bounds
+        if let bounds = self.superview?.bounds {
+            self.superview?.ld_getGradient()?.frame = bounds
+        }
     }
 }
 
