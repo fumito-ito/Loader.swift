@@ -37,17 +37,17 @@ extension UIColor {
 
     static func backgroundFadedGrey()->UIColor
     {
-        return UIColor(red: (246.0/255.0), green: (247.0/255.0), blue: (248.0/255.0), alpha: 1)
+        return UIColor.systemGray6
     }
 
     static func gradientFirstStop()->UIColor
     {
-        return  UIColor(red: (238.0/255.0), green: (238.0/255.0), blue: (238.0/255.0), alpha: 1.0)
+        return UIColor.systemGray5
     }
 
     static func gradientSecondStop()->UIColor
     {
-        return UIColor(red: (221.0/255.0), green: (221.0/255.0), blue:(221.0/255.0) , alpha: 1.0);
+        return UIColor.systemGray4
     }
 }
 
@@ -103,7 +103,7 @@ class CutoutView : UIView
             return
         }
 
-        context.setFillColor(UIColor.white.cgColor)
+        context.setFillColor(UIColor.systemBackground.cgColor)
         context.fill(self.bounds)
 
         for view in subviews where view != self {
